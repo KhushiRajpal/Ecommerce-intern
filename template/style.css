@@ -1,0 +1,47 @@
+html{
+	font-size: 62.5%;
+	box-sizing: border-box;
+}
+
+body{
+	margin:0;
+	height: 100vh;
+	font-size: 1.6m;
+	font-family: Helvetica, Arial, sans-serif;
+}
+.grid-container{
+	display: grid;
+	grid-template-areas:
+	'header'
+	'main'
+	'footer';
+	grid-template-columns : 1fr;
+	grid-template-rows: 5rem 1fr 5rem;
+	height: 100%;
+}
+header {
+	grid-area: header;
+	background-color: #104579;
+
+}
+main {
+	grid-area: main;
+	padding: 1rem;
+
+}
+
+footer{
+	grid-area: footer;
+	background-color:blue;
+	color: #ffff;
+}
+
+.row
+{
+	display:flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+
+}
+
