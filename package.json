@@ -1,0 +1,29 @@
+{
+  "name": "e-commerce",
+  "type" : "module",
+  "version": "1.0.0",
+  "description": "Backend ecommerce ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KhushiRajpal/ecommerce-intern.git"
+  },
+  "keywords": [
+    "Ecommerce",
+    "web-dev",
+    "mern",
+    "stack"
+  ],
+  "author": "Harsheen Rajpal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KhushiRajpal/ecommerce-intern/issues"
+  },
+  "homepage": "https://github.com/KhushiRajpal/ecommerce-intern#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
