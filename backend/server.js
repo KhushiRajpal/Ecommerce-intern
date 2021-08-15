@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const authJwt = require('./helpers/jwt');
 
 const productsRouter = require('./routers/products.js');
 const catalogRouter = require('./routers/catalogs.js');
@@ -14,6 +15,7 @@ const api = process.env.API_URL;
 //middleware I'm using
 app.use(express.json());
 app.use(morgan('tiny'));
+app.use(authJwt());
 
 //routers
 
