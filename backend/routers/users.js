@@ -3,6 +3,28 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 
+
+router.get(`/` , async (req, res) => {
+	
+
+    const userList = await User.find().select('-passwordHash');
+	 
+	if(!userList){
+		res.status(500).json({success: false});
+	}
+	res.send(userList);
+})
+
+router.get('/:id' , async(req,res) =>{
+	const user = await User.findById(req.params.id).select('-passwordHash');
+	if(!user)
+	{
+	return res.status(404).send('the user with given id was not found')
+	}
+	res.status(200).send(user);
+
+
+})
 router.post('/', async (req,res)=>{
     let user = new User({
         name: req.body.name,
@@ -24,6 +46,18 @@ router.post('/', async (req,res)=>{
 	}
 
     res.send(user);
+})
+
+router.post('/login', async(req,res) =>{
+	const user = await User.findOne({email: req.body.email})
+	if(!user)
+	{
+		return res.status('400').send('User not found');
+	}
+	if(user && bcrypt.compareSync(req.body.password , user.passwordHash)){
+		return res.status(200).send('user authenticated');
+	}
+	return res.status(400).send('password is wrong');
 })
 
 module.exports = router;
