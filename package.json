@@ -1,9 +1,8 @@
 {
   "name": "e-commerce",
-  "type": "module",
   "version": "1.0.0",
   "description": "Backend ecommerce ",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js"
   },
@@ -24,6 +23,7 @@
   },
   "homepage": "https://github.com/KhushiRajpal/ecommerce-intern#readme",
   "dependencies": {
+    "dotenv": "^10.0.0",
     "express": "^4.17.1"
   },
   "devDependencies": {

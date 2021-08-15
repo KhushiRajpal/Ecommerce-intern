@@ -1,17 +1,29 @@
-import express from 'express';
-import data from './data.js'
+const express = require('express');
 
 const app = express();
 
-app.get('/api/products' , (req, res) => {
-	res.send(data.products);
+require('dotenv/config');
+const api = process.env.API_URL;
+//Middleware
+app.use(express.json());
+
+
+app.get(`${api}/products` , (req, res) => {
+	const product = {
+		id: 1,
+		name: 'Tresemme shampoo',
+		image: 'someurl',
+	}
+	res.send(product);
 })
 
-app.get('/', (req,res) => {
-	res.send('Server is ready');
-});
+app.post(`${api}/products` , (req, res) => {
+	const newProduct = req.body;
+	console.log(newProduct);
+	res.send(newProduct);
+})
 
-const port = process.env.PORT || 5000;
-app.listen(5000, () => {
-	console.log(`Serve at http://localhost:${port}`);
+app.listen(3000, () => {
+	console.log(api);
+	console.log(`Serve at http://localhost:3000`);
 });
