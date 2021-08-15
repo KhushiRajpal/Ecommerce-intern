@@ -39,6 +39,25 @@ router.post('/', async(req,res) =>{
 	res.send(catalog);
 })
 
+
+router.put('/:id',async (req, res)=> {
+    const catalog = await Catalog.findByIdAndUpdate(
+        req.params.id,
+        {
+            name: req.body.name,
+            icon: req.body.icon,
+            color: req.body.color,
+        },
+        { new: true}
+    )
+
+    if(!catalog)
+	{
+    return res.status(400).send('the catalog was not updated')
+	}
+    res.send(catalog);
+})
+
 //doing it via promise
 router.delete('/:id', (req, res) =>{
 	Catalog.findByIdAndRemove(req.params.id).then(catalog =>{
