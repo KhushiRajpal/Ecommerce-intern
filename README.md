@@ -1,12 +1,20 @@
-delete package.json lock files
+INSTRUCTIONS: 
+1) delete package.json lock files
 
 
-use npm install to install required dependencies
+2) use npm install to install required dependencies
 
 
-(install required node modules)
+3) (install required node modules)
 api endpoints have been tested on postman
 
+4)connect to mongodb server and create database
+
+5) customize env variables
+
+
+
+REQUIREMENTS:
 
 REST API for an e-commerce marketplace : Build on Node.Js using Express 
 
