@@ -41,10 +41,7 @@ const orderSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
     },
-	seller:{
-		type: mongoose.Schema.Types.ObjectId,
-        ref: 'Seller',
-    },
+	
 
     dateOrdered: {
         type: Date,
