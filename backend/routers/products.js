@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 
 router.get(`/` , async (req, res) => {
-	const productList = await Product.find().select('name price -_id');
+	const productList = await Product.find().select('name price catalog -_id').populate('catalog');   
 	if(!productList){
 		res.status(500).json({success: false});
 	}
@@ -12,7 +12,7 @@ router.get(`/` , async (req, res) => {
 })
 
 router.post(`/`,  async (req, res) =>{
-    const catalog = await Catalog.findById(req.body.catalog);
+    const catalog = await Catalog.findById(req.body.catalog).populate('catalog');
     if(!catalog)
 	{
 		return res.status(400).send('Invalid Catalog! Enter the correct one')
