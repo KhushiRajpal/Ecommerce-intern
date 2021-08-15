@@ -5,7 +5,14 @@ const router = express.Router();
 const mongoose = require('mongoose');
 
 router.get(`/` , async (req, res) => {
-	const productList = await Product.find().populate('catalog');   
+	let filter = {};
+    if(req.query.catalog)
+    {
+         filter = {catalog: req.query.catalog.split(',')}
+    }
+
+    const productList = await Product.find(filter).populate('catalog');
+	 
 	if(!productList){
 		res.status(500).json({success: false});
 	}
@@ -13,6 +20,7 @@ router.get(`/` , async (req, res) => {
 })
 
 router.post(`/`,  async (req, res) =>{
+	//getting a list of all sellers this way , along with a specific one
     const catalog = await Catalog.findById(req.body.catalog).populate('catalog');
     if(!catalog)
 	{
