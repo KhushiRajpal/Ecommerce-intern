@@ -3,7 +3,8 @@ const app = express();
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 
-const productsRouter = require('./routers/products');
+const productsRouter = require('./routers/products.js');
+const catalogRouter = require('./routers/catalogs.js');
 
 // importing my env variables
 require('dotenv/config');
@@ -16,6 +17,7 @@ app.use(morgan('tiny'));
 //routers
 
 app.use(`${api}/products`, productsRouter);
+app.use(`${api}/catalogs`, catalogRouter);
 
 
 mongoose.connect(process.env.CONNECTIONSTRING,{

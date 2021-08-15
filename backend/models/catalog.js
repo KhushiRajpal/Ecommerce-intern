@@ -5,6 +5,9 @@ const catalogSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+	icon:{
+		type:String,
+	},
     
     color: { 
         type: String,
@@ -12,12 +15,6 @@ const catalogSchema = mongoose.Schema({
 })
 
 
-catalogSchema.virtual('id').get(function () {
-    return this._id.toHexString();
-});
 
-catalogSchema.set('toJSON', {
-    virtuals: true,
-});
 
-exports.Catalog = mongoose.model('Catalog', categorySchema);
+exports.Catalog = mongoose.model('Catalog', catalogSchema);
