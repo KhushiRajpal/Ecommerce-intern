@@ -7,7 +7,7 @@ const errorHandler = require('./helpers/error-handler');
 const productsRouter = require('./routers/products.js');
 const catalogRouter = require('./routers/catalogs.js');
 const userRouter = require('./routers/users.js');
-
+const ordersRoutes = require('./routers/orders');
 // importing my env variables
 require('dotenv/config');
 const api = process.env.API_URL;
@@ -23,6 +23,7 @@ app.use(errorHandler)
 app.use(`${api}/products`, productsRouter);
 app.use(`${api}/catalogs`, catalogRouter);
 app.use(`${api}/user`, userRouter);
+app.use(`${api}/orders`, ordersRoutes);
 
 
 mongoose.connect(process.env.CONNECTIONSTRING,{
