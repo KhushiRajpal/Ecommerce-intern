@@ -18,9 +18,9 @@ const productSchema = mongoose.Schema({
         type: Number,
         default:0
     },
-    catalogs: {
+    catalog: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Catalogs',
+        ref: 'Catalog',
         required:true
     },
    
@@ -30,13 +30,6 @@ const productSchema = mongoose.Schema({
     },
 })
 
-productSchema.virtual('id').get(function () {
-    return this._id.toHexString();
-});
-
-productSchema.set('toJSON', {
-    virtuals: true,
-});
 
 
 exports.Product = mongoose.model('Product', productSchema);
