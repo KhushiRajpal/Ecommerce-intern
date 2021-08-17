@@ -3,19 +3,12 @@ const expressJwt = require('express-jwt');
 function authJwt(){
 	
 		const secret = process.env.secret;
-		const api = process.env.API_URL;
         return expressJwt({
 			secret,
-			algorithms: ['HS256'],
-			isRevoked: isRevoked
+			algorithms: ['HS256']
 	}).unless({
         path: [
-          
-            {url: '/api/v1/products' , methods: ['GET', 'OPTIONS'] },
-            {url: '/api/v1/catalogs' , methods: ['GET', 'OPTIONS'] },
-            {url: '/api/v1/orders' ,methods: ['GET', 'OPTIONS', 'POST']},
-            `${api}/users/login`,
-            `${api}/users/register`,
+            '/api/v1/user/login'
         ]
     })
 }
